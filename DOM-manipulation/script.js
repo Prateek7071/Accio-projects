@@ -1,50 +1,46 @@
-let counter = 1
-let tag = true
-const decrement = document.getElementById('Decrement')
-const increment = document.getElementById('Increment')
-const clear = document.getElementById('Clear')
-const counterOut = document.getElementById('output')
-const container = document.querySelector('.container')
-const buttons = document.querySelector('.buttons')
-const error = document.createElement('p')
+let counter = 0;
 
-clear.addEventListener('click',e=>{
-  displayMessage(0)
-})
+const counterDisplay = document.getElementById("count");
+const errorDisplay = document.getElementById("error");
+const decrementBtn = document.getElementById("decrementBtn");
+const incrementBtn = document.getElementById("incrementBtn");
+const clearBtn = document.getElementById("clearBtn");
 
-increment.addEventListener('click',e=>{
-  counter++;
-  counterOut.textContent=`Your Current Count is: ${counter}`
-  if(!tag){
-    tag = true
-    error.remove()
-    buttons.appendChild(clear)
+function displayMessage() {
+  counterDisplay.textContent = counter;
+
+  if (counter === 0) {
+    clearBtn.classList.add("hidden");
+  } else {
+    clearBtn.classList.remove("hidden");
   }
-})
-
-decrement.addEventListener('click',e=>{
-    if(counter>0){
-    counter--;
-    counterOut.textContent=`Your Current Count is: ${counter}`
-    }
-    if(counter===0 && tag){
-      tag = false
-      clear.remove()
-      error.textContent = "Error : Cannot go below 0"
-      container.appendChild(error)
-      error.classList.add("error")
-    }
-})
-
-function displayMessage(count){
-  if(count===0 && tag){
-    tag = false;
-    counter = 0
-    counterOut.textContent=`Your Current Count is: 0`
-    clear.remove()
-    error.textContent = "Error : Cannot go below 0"
-    container.appendChild(error)
-    error.classList.add("error")
-  }
-  
 }
+
+function displayError() {
+  errorDisplay.classList.add("show");
+}
+
+decrementBtn.addEventListener("click", () => {
+  if (counter > 0) {
+    counter--;
+    displayMessage();
+  } else {
+    displayError();
+  }
+});
+
+incrementBtn.addEventListener("click", () => {
+  if(counter===0){
+    errorDisplay.classList.remove("show");
+  }
+  counter++;
+  displayMessage();
+  
+});
+
+clearBtn.addEventListener("click", () => {
+  counter = 0;
+  displayMessage();
+});
+
+displayMessage();

@@ -1,43 +1,88 @@
-body{
-    background-color: black;
-    margin-top: 50px;
-    margin-left: 50px;
-}
-h1{
-    color:aliceblue;
-    font-size: 50px;
-    font-weight: 100;
-}
-p{
-    color:white;
-    font-size: 20px;
-}
-.error{
-    color: red;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-hr {
-    border: none;
-    border-top: 1px solid lightgrey;
-    margin: 20px 0;
-    width: 13% !important;
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    padding: 50px;
 }
-button[id="Clear"]{
-    background-color: black;
-    color: white;
-    border: 1px solid #fff;
-}    
-button{
-    padding: 12px 32px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    border: 1px solid #fff;
-    background-color: #fff;
-    color: #000;
-    transition: all 0.3s ease;
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-weight: normal;
 }
-.buttons {
+
+.count-display {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+.count-number {
+    font-weight: bold;
+    color: #fff;
+}
+
+hr{
+    width: 10%;
+}
+
+.error-message {
+    color: #ff4444;
+    font-size: 1rem;
+    margin-bottom: 30px;
+    min-height: 24px;
+    visibility: hidden;
+}
+
+.error-message.show {
+    visibility: visible;
+}
+
+.button-container {
     display: flex;
     gap: 15px;
+}
+
+button {
+    padding: 12px 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.decrement-btn,
+.increment-btn {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #fff;
+}
+
+.decrement-btn:hover,
+.increment-btn:hover {
+    background-color: #ddd;
+}
+
+.clear-btn {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.clear-btn:hover {
+    background-color: #333;
+}
+
+.clear-btn.hidden {
+    display: none;
+}
+
+button:active {
+    transform: scale(0.95);
 }
