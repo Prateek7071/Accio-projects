@@ -104,23 +104,25 @@ function spawnNewTable(data){
   page.appendChild(table2)
 }
 
-btnSortAZ.addEventListener('click',()=>{
+btnSortAZ.addEventListener('click', () => {
   let newData = structuredClone(data);
-  newData = newData.map(e=>({
-   ...e,first_name:e.first_name+" "+e.last_name //neat method
-  }))
-  newData.sort((a, b) => a.first_name.localeCompare(b.first_name))
-  renderData(newData)
-})
+  newData.sort((a, b) => {
+    let nameA = `${a.first_name} ${a.last_name}`.toLowerCase();
+    let nameB = `${b.first_name} ${b.last_name}`.toLowerCase();
+    return nameA.localeCompare(nameB);
+  });
+  renderData(newData);
+});
 
-btnSortZA.addEventListener('click',()=>{
+btnSortZA.addEventListener('click', () => {
   let newData = structuredClone(data);
-  newData = newData.map(e=>({
-   ...e,first_name:e.first_name+" "+e.last_name //neat method
-  }))
-  newData.sort((a, b) => b.first_name.localeCompare(a.first_name))
-  renderData(newData)
-})
+  newData.sort((a, b) => {
+    let nameA = `${a.first_name} ${a.last_name}`.toLowerCase();
+    let nameB = `${b.first_name} ${b.last_name}`.toLowerCase();
+    return nameB.localeCompare(nameA); 
+  });
+  renderData(newData);
+});
 
 btnSortMarks.addEventListener('click',()=>{
   let newData = structuredClone(data);
